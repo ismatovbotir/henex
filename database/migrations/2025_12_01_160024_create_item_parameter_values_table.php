@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('parameters', function (Blueprint $table) {
+        Schema::create('item_parameter_values', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('parameter_type_id')->constrained();
-            $table->string('title');
+            $table->foreignId('item_id')->constrained();
+            $table->foreignId('parameter_value_id')->constrained();
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('parameters');
+        Schema::dropIfExists('item_parameter_values');
     }
 };
