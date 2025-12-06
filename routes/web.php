@@ -22,3 +22,6 @@ Route::get('/articles/{slug}', [ArticleController::class, 'show'])->name('articl
 
 Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
 Route::get('/contacts/{slug}', [ContactController::class, 'show'])->name('contact.show');
+
+
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function () {});
