@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('translations', function (Blueprint $table) {
             $table->id();
-            $table->string('type')->default('name');
+            $table->string('type')->default('name'); //title, content, description,name
             $table->string('lang', 2)->default('uz');
             $table->bigInteger('model_id');
             $table->string('model');
-            $table->text('content');
+            $table->text('value');
             $table->timestamps();
         });
     }

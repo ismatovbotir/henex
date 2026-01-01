@@ -7,7 +7,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 
 Route::get('/', function () {
-    return view('welcome');
+    //app()->setLocale('ru');
+    return  view('welcome');
 });
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
@@ -24,4 +25,23 @@ Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.ind
 Route::get('/contacts/{slug}', [ContactController::class, 'show'])->name('contact.show');
 
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function () {});
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::get('/', function () {
+        return "Admin Dashboard";
+    })->name('dashboard');
+
+    Route::get('/users', function () {
+        return "Admin Users";
+    })->name('users.index');
+    Route::get('/params', function () {
+        return "Admin Params";
+    })->name('params.index');
+    Route::get('/companies', function () {
+        return "Admin Companies";
+    })->name('companies.index');
+
+
+    Route::get('/items', function () {
+        return "Admin Items";
+    })->name('items.index');
+});

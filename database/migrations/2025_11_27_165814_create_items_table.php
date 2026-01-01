@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            //$table->string('title');
             $table->string('model');
+            $table->foreignId('brand_id')->constrained()->nullable();
             $table->string('gtin')->nullable();
-
+            $table->string('code')->nullable();
             $table->string('slug')->unique();
 
             $table->timestamps();
